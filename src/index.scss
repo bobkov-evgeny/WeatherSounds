@@ -1,0 +1,147 @@
+@mixin rainy {
+    background-image: url("./resources/rainy-bg.jpg");
+}
+
+@mixin snowy {
+    background-image: url("resources/winter-bg.jpg");
+}
+
+@mixin sunny {
+    background-image: url("resources/summer-bg.jpg");
+}
+
+@font-face {
+    font-family: 'Roboto';
+    src: url("resources/fonts/Roboto-Regular.ttf") format('truetype');
+}
+
+* {
+    margin: 0;
+    box-sizing: border-box;
+    font-family: 'Roboto', 'sans-serif';
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100vh;
+    width: 100vw;
+    padding: 10% 0;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    transition: all 150ms ease-out;
+
+    &-rainy {
+        @extend .container;
+        @include rainy
+    }
+
+    &-snowy {
+        @extend .container;
+        @include snowy
+    }
+
+    &-sunny {
+        @extend .container;
+        @include sunny
+    }
+
+    .blurred-layer {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        backdrop-filter: blur(5px);
+    }
+
+    .content {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 5vh;
+        z-index: 1;
+
+        .header {
+            font-size: 60px;
+            font-weight: 600;
+            color: white;
+        }
+
+        .items-container {
+            display: flex;
+            flex-direction: row;
+            gap: 5vw;
+            z-index: 1;
+
+            .item {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                aspect-ratio: 1;
+                width: 20vw;
+                border-radius: 25%;
+                background-size: cover;
+                background-position: center;
+                background-repeat: no-repeat;
+                cursor: pointer;
+                transition: all 150ms ease-out;
+                border: 1px solid white;
+                box-shadow: 0 9px 25px 6px rgba(0, 0, 0, 0.5);
+                
+                &:hover {
+                    transform: scale(1.1);
+                }
+
+                &-rainy {
+                    @extend .item;
+                    @include rainy;
+
+                    &::after {
+                        content: '';
+                        height: 35%;
+                        width: 35%;
+                        background-image: url('./resources/icons/cloud-rain.svg');
+                        background-size: cover;
+                        background-position: center;
+                        background-repeat: no-repeat;
+                    }
+                }
+
+                &-snowy {
+                    @extend .item;
+                    @include snowy;
+
+                    &::after {
+                        content: '';
+                        height: 35%;
+                        width: 35%;
+                        background-image: url('./resources/icons/cloud-snow.svg');
+                        background-size: cover;
+                        background-position: center;
+                        background-repeat: no-repeat;
+                    }
+                }
+
+                &-sunny {
+                    @extend .item;
+                    @include sunny;
+
+                    &::after {
+                        content: '';
+                        height: 35%;
+                        width: 35%;
+                        background-image: url('./resources/icons/sun.svg');
+                        background-size: cover;
+                        background-position: center;
+                        background-repeat: no-repeat;
+                    }
+                }
+            }
+        }
+    }
+}
+
+
