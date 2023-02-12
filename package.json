@@ -1,20 +1,25 @@
 {
-    "name": "weather sounds",
+    "name": "weather-sounds",
     "version": "1.0.0",
     "description": "",
     "private": true,
     "scripts": {
         "start": "npx webpack serve --config webpack.config.dev.js",
         "build": "npx webpack --config webpack.config.prod.js",
-        "build:dev": "npx webpack --config webpack.config.dev.js"
+        "build:dev": "npx webpack --config webpack.config.dev.js",
+        "lint": "eslint . --ext .ts"
     },
     "keywords": [],
-    "author": "",
+    "author": "BobkovES",
     "license": "ISC",
     "devDependencies": {
+        "@typescript-eslint/eslint-plugin": "^5.51.0",
+        "@typescript-eslint/parser": "^5.51.0",
         "copy-webpack-plugin": "^11.0.0",
         "css-loader": "^6.7.3",
         "css-minimizer-webpack-plugin": "^4.2.2",
+        "eslint": "^8.34.0",
+        "eslint-webpack-plugin": "^4.0.0",
         "file-loader": "^6.2.0",
         "html-webpack-plugin": "^5.5.0",
         "mini-css-extract-plugin": "^2.7.2",

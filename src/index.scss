@@ -10,6 +10,14 @@
     background-image: url("resources/summer-bg.jpg");
 }
 
+@mixin paused {
+    &.paused {
+        &::after {
+            background-image: url('./resources/icons/pause.svg');
+        }
+    }
+}
+
 @font-face {
     font-family: 'Roboto';
     src: url("resources/fonts/Roboto-Regular.ttf") format('truetype');
@@ -57,14 +65,18 @@
         backdrop-filter: blur(5px);
     }
 
-    .content {
+    .app-content {
         display: flex;
         flex-direction: column;
         align-items: center;
         gap: 5vh;
         z-index: 1;
 
-        .header {
+        input {
+            width: 350px;
+        }
+
+        .title {
             font-size: 60px;
             font-weight: 600;
             color: white;
@@ -82,7 +94,8 @@
                 align-items: center;
                 aspect-ratio: 1;
                 width: 20vw;
-                border-radius: 25%;
+                max-width: 300px;
+                border-radius: 20%;
                 background-size: cover;
                 background-position: center;
                 background-repeat: no-repeat;
@@ -98,6 +111,7 @@
                 &-rainy {
                     @extend .item;
                     @include rainy;
+                    @include paused;
 
                     &::after {
                         content: '';
@@ -113,6 +127,7 @@
                 &-snowy {
                     @extend .item;
                     @include snowy;
+                    @include paused;
 
                     &::after {
                         content: '';
@@ -128,6 +143,7 @@
                 &-sunny {
                     @extend .item;
                     @include sunny;
+                    @include paused;
 
                     &::after {
                         content: '';
