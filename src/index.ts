@@ -19,21 +19,21 @@ const weatherList: IWeatherItem[] = [
     }
 ];
 
-const appBackgroundImage = document.querySelector('.container');
-appBackgroundImage.className = `container-${weatherList[0].type}`;
+const backgroundImageElement = document.querySelector('.container');
+backgroundImageElement.className = `container-${weatherList[0].type}`;
 
-const weatherItemsContainer = document.querySelector('.items-container');
-const volumeControlInput: HTMLInputElement = document.querySelector('.volume-control');
+const weatherItemsContainerElement = document.querySelector('.items-container');
+const volumeControlInputElement: HTMLInputElement = document.querySelector('.volume-control');
 let currentAudio: HTMLAudioElement;
 
-volumeControlInput.addEventListener('change', () => {
+volumeControlInputElement.addEventListener('change', () => {
    if(currentAudio) {
-       currentAudio.volume = +volumeControlInput.value;
+       currentAudio.volume = +volumeControlInputElement.value;
    }
 });
 
 const handleWeatherItemClick = (weatherElement: HTMLDivElement, {type, audioInstance}: IWeatherItem) => {
-    appBackgroundImage.className = `container-${type}`;
+    backgroundImageElement.className = `container-${type}`;
 
     if(!currentAudio || currentAudio !== audioInstance) {
         document.querySelector('.paused')?.classList.remove('paused');
@@ -49,7 +49,7 @@ const handleWeatherItemClick = (weatherElement: HTMLDivElement, {type, audioInst
         weatherElement.classList.remove('paused');
     }
 
-    currentAudio.volume = +volumeControlInput.value;
+    currentAudio.volume = +volumeControlInputElement.value;
 };
 
 weatherList.forEach(weatherItem => {
@@ -57,6 +57,6 @@ weatherList.forEach(weatherItem => {
    newWeatherElement.className = `item-${weatherItem.type}`;
    newWeatherElement.addEventListener('click', () => handleWeatherItemClick(newWeatherElement, weatherItem));
 
-   weatherItemsContainer.appendChild(newWeatherElement);
+    weatherItemsContainerElement.appendChild(newWeatherElement);
 });
 
