@@ -19,10 +19,10 @@ const weatherList: IWeatherItem[] = [
     }
 ];
 
-const backgroundImageElement = document.querySelector('.container');
+const backgroundImageElement: HTMLDivElement = document.querySelector('.container');
 backgroundImageElement.className = `container-${weatherList[0].type}`;
 
-const weatherItemsContainerElement = document.querySelector('.items-container');
+const weatherItemsContainerElement: HTMLDivElement = document.querySelector('.items-container');
 const volumeControlInputElement: HTMLInputElement = document.querySelector('.volume-control');
 let currentAudio: HTMLAudioElement;
 
